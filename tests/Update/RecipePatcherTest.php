@@ -48,6 +48,7 @@ class RecipePatcherTest extends TestCase
         (new Process(['git', 'init'], FLEX_TEST_DIR))->mustRun();
         (new Process(['git', 'config', 'user.name', '"Flex Updater"'], FLEX_TEST_DIR))->mustRun();
         (new Process(['git', 'config', 'user.email', '""'], FLEX_TEST_DIR))->mustRun();
+        (new Process(['git', 'config', 'commit.gpgsign', 'false'], FLEX_TEST_DIR))->mustRun();
         if (0 !== \count($originalFiles)) {
             (new Process(['git', 'add', '-A'], FLEX_TEST_DIR))->mustRun();
             (new Process(['git', 'commit', '-m', '"original files"'], FLEX_TEST_DIR))->mustRun();
@@ -205,6 +206,7 @@ EOF
         (new Process(['git', 'init'], FLEX_TEST_DIR))->mustRun();
         (new Process(['git', 'config', 'user.name', 'Unit test'], FLEX_TEST_DIR))->mustRun();
         (new Process(['git', 'config', 'user.email', ''], FLEX_TEST_DIR))->mustRun();
+        (new Process(['git', 'config', 'commit.gpgsign', 'false'], FLEX_TEST_DIR))->mustRun();
 
         foreach ($filesCurrentlyInApp as $file => $contents) {
             $path = FLEX_TEST_DIR.'/'.$file;
@@ -239,6 +241,7 @@ EOF
         (new Process(['git', 'init'], FLEX_TEST_DIR))->mustRun();
         (new Process(['git', 'config', 'user.name', 'Unit test'], FLEX_TEST_DIR))->mustRun();
         (new Process(['git', 'config', 'user.email', ''], FLEX_TEST_DIR))->mustRun();
+        (new Process(['git', 'config', 'commit.gpgsign', 'false'], FLEX_TEST_DIR))->mustRun();
 
         $dir = FLEX_TEST_DIR.'/config/packages';
         @mkdir($dir, 0777, true);
@@ -277,6 +280,7 @@ EOF
         (new Process(['git', 'init'], $mainProjectPath))->mustRun();
         (new Process(['git', 'config', 'user.name', 'Unit test'], $mainProjectPath))->mustRun();
         (new Process(['git', 'config', 'user.email', ''], $mainProjectPath))->mustRun();
+        (new Process(['git', 'config', 'commit.gpgsign', 'false'], $mainProjectPath))->mustRun();
 
         if (!file_exists($subProjectPath)) {
             mkdir($subProjectPath, 0777, true);
@@ -404,6 +408,7 @@ EOF
         (new Process(['git', 'init'], FLEX_TEST_DIR))->mustRun();
         (new Process(['git', 'config', 'user.name', 'Unit test'], FLEX_TEST_DIR))->mustRun();
         (new Process(['git', 'config', 'user.email', ''], FLEX_TEST_DIR))->mustRun();
+        (new Process(['git', 'config', 'commit.gpgsign', 'false'], FLEX_TEST_DIR))->mustRun();
 
         $startingFiles = [
             '.env' => $files['dot_env_clean']['in_app'],
@@ -633,6 +638,7 @@ EOF
         (new Process(['git', 'init'], $dir))->mustRun();
         (new Process(['git', 'config', 'user.name', 'Unit test'], $dir))->mustRun();
         (new Process(['git', 'config', 'user.email', ''], $dir))->mustRun();
+        (new Process(['git', 'config', 'commit.gpgsign', 'false'], $dir))->mustRun();
 
         if (!file_exists(\dirname($dir.'/'.$filename))) {
             @mkdir(\dirname($dir.'/'.$filename), 0777, true);

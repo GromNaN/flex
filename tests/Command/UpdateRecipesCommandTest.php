@@ -64,6 +64,7 @@ class UpdateRecipesCommandTest extends TestCase
         (new Process(['git', 'init'], FLEX_TEST_DIR))->mustRun();
         (new Process(['git', 'config', 'user.name', 'Unit test'], FLEX_TEST_DIR))->mustRun();
         (new Process(['git', 'config', 'user.email', ''], FLEX_TEST_DIR))->mustRun();
+        (new Process(['git', 'config', 'commit.gpgsign', 'false'], FLEX_TEST_DIR))->mustRun();
 
         @mkdir(FLEX_TEST_DIR.'/bin');
 
